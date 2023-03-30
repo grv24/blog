@@ -91,7 +91,7 @@
       </main>
 
       <!--Footer-->
-      <footer class="text-center m-3">
+      <footer class="text-center ">
         <section class=" bg-light shadow-sm">
           <!-- Instagram -->
           <a
@@ -136,26 +136,27 @@
      <script>
         var obj;
         fetch('./data/html.json')
-        .then((response)=>response.json())
-        .then((json)=>{
-          const obj = json;
-          let main = document.getElementById('main')
-          let heading = `<div class="my-3 bg-light p-3 text-center rounded-3"> 
-                                <h1 class="auto m-auto py-2 border-bottom border-warning border-4" style="maxwidth:41rem">${obj.description.name}</h1>
-                          </div>` 
-          let para = `<div class="my-3 bg-light p-3 text-center rounded-3"> 
-                          <p class="">
-                            ${obj.description.topDescription}
-                            </p>
-                      </div>`
-         
-          function update(main,heading,para){
-          return main.innerHTML = (heading+'\n'+'\t'+para)
-          }
-            update(main,heading,para)
-
-        })
-      
+          .then((response) => response.json())
+          .then((json) => {
+            const obj = json;
+            let main = document.getElementById('main')
+            let heading = `<div class="my-3 bg-light p-3 text-center rounded-3"> 
+                                  <h1 class="auto m-auto py-2" id="HTML-top" style="maxwidth:41rem">${obj.description.name}</h1>
+                            </div>` 
+            let para = `<div class="my-3 bg-light p-3 text-center rounded-3"> 
+                              <p class="">
+                                ${obj.description.topDescription}
+                                </p>
+                        </div>`          
+            let tagsR = `<p>   HTML uses "markup" to annotate text, images, and other content for display in a Web browser. HTML markup includes special "elements" such as 
+                          ${typeof json.description.tags}: ${json.description.tags} and many others 
+                        </p>`
+            console.log(tagsR)
+            function update(main,heading,para, tagsR) {
+              return main.innerHTML = (heading + '\n' + '\t' + '\n' + '\t' + para + tagsR)
+            }
+            update(main, heading, para, tagsR)
+          }) 
      </script>
   </body>
 </html>
