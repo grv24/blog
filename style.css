@@ -1,6 +1,6 @@
 @media (max-width: 576px) {
   img.img-mq {
-    height: 14rem !important;
+    height: 20rem !important;
   }
   #contact-container {
     width: 90vw;
